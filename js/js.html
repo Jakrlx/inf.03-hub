@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>INF.03 HUB - JS</title>
+<style>
+body{font-family:Arial,sans-serif;background:#121212;color:#eee;max-width:1400px;margin:auto;padding:20px;line-height:1.6}
+.section{background:#1f1f1f;padding:20px;margin:20px 0;border-radius:12px}
+pre{
+background:#0b0b0b;
+border-left:4px solid #7dd3fc;
+padding:12px;
+border-radius:8px;
+overflow:auto;
+color:#d4d4d4;
+}
+h1,h2,h3{color:#7dd3fc}
+.warning{background:#5a1d1d;padding:10px;border-radius:8px}
+.info{background:#1d355a;padding:10px;border-radius:8px}
+.search-box{
+margin:20px 0;
+}
+
+#searchInput{
+width:100%;
+padding:15px;
+font-size:16px;
+background:#1f1f1f;
+color:white;
+border:1px solid #444;
+border-radius:10px;
+outline:none;
+}
+
+#searchInput:focus{
+border-color:#7dd3fc;
+box-shadow:0 0 10px rgba(125,211,252,.4);
+}
+.home-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#7dd3fc;
+color:#121212;
+text-decoration:none;
+padding:12px 18px;
+border-radius:12px;
+font-weight:bold;
+box-shadow:0 0 15px rgba(125,211,252,.4);
+transition:.2s;
+z-index:9999;
+}
+
+.home-btn:hover{
+transform:scale(1.05);
+background:#38bdf8;
+}
+
+.home-btn:active{
+transform:scale(.95);
+}
+.top-btn{
+position:fixed;
+bottom:80px;
+right:20px;
+background:#22c55e;
+color:white;
+text-decoration:none;
+padding:12px 18px;
+border-radius:12px;
+font-weight:bold;
+z-index:9999;
+}
+
+.top-btn:hover{
+background:#16a34a;
+}
+
+html{
+scroll-behavior:smooth;
+}
+.search-wrapper{
+position:sticky;
+top:0;
+z-index:1000;
+background:#121212;
+padding:15px 0;
+}
+
+.menu-btn:hover{
+background:#38bdf8;
+}
+
+.menu-container{
+position:fixed;
+bottom:20px;
+right:20px;
+z-index:9999;
+}
+
+.menu-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+
+background:#7dd3fc;
+color:#121212;
+
+border:none;
+padding:12px 18px;
+
+border-radius:12px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+z-index:10000;
+
+box-shadow:0 0 15px rgba(125,211,252,.4);
+
+transition:.2s;
+}
+
+.menu-btn:hover{
+background:#38bdf8;
+transform:scale(1.05);
+}
+
+.dropdown-menu{
+
+position:absolute;
+
+bottom:60px;
+right:0;
+
+width:240px;
+
+background:#1f1f1f;
+
+border-radius:12px;
+
+overflow:hidden;
+
+box-shadow:
+0 0 20px rgba(0,0,0,.4);
+
+opacity:0;
+visibility:hidden;
+
+transform:
+translateY(20px)
+scale(.95);
+
+transition:.25s;
+}
+
+.dropdown-menu.show{
+
+opacity:1;
+visibility:visible;
+
+transform:
+translateY(0)
+scale(1);
+}
+
+.dropdown-menu a{
+
+display:block;
+
+padding:14px;
+
+text-decoration:none;
+
+color:white;
+
+border-bottom:
+1px solid #333;
+
+transition:.2s;
+}
+
+.dropdown-menu a:hover{
+
+background:#2d3748;
+padding-left:20px;
+
+}
+
+.dropdown-menu a:last-child{
+border-bottom:none;
+}
+</style>
+</head>
+<body id="top">
+
+<h1>INF.03 HUB - JS</h1>
+<p>Dokumentacja JavaScript pod egzamin INF.03. Każda sekcja zawiera opis, zastosowanie, przykłady i najczęstsze błędy.</p>
+
+<div class="search-wrapper">
+
+<div class="search-box">
+<input
+type="text"
+id="searchInput"
+placeholder="Szukaj np. flex, float, hover..."
+>
+</div>
+
+</div>
+
+<div class="section">
+<h2>getElementById()</h2>
+
+<p><b>Co robi?</b></p>
+
+<p>
+Pobiera element HTML po jego id.
+</p>
+
+<pre>
+const pole = document.getElementById("pole");
+</pre>
+
+<p><b>Typowe zastosowanie:</b></p>
+
+<p>
+Pobieranie inputów i przycisków.
+</p>
+
+<p><b>Częstotliwość:</b> ~95%</p>
+
+</div>
+
+<div class="section">
+<h2>.value</h2>
+
+<p>
+Pobiera wartość wpisaną przez użytkownika.
+</p>
+
+<pre>
+let liczba = document.getElementById("liczba").value;
+</pre>
+
+<p><b>Częstotliwość:</b> ~90%</p>
+
+</div>
+
+<div class="section">
+<h2>innerHTML</h2>
+
+<p>
+Zmienia zawartość elementu.
+</p>
+
+<pre>
+document.getElementById("wynik").innerHTML = "Witaj";
+</pre>
+
+<p><b>Częstotliwość:</b> ~95%</p>
+
+</div>
+
+<div class="section">
+<h2>onclick</h2>
+
+<p>
+Uruchamia funkcję po kliknięciu.
+</p>
+
+<pre>
+button onclick="policz()">Kliknij
+/button>
+</pre>
+
+<p><b>Częstotliwość:</b> ~80%</p>
+
+</div>
+
+<div class="section">
+<h2>function</h2>
+
+<p>
+Tworzenie funkcji.
+</p>
+
+<pre>
+function policz(){
+    alert("Działa");
+}
+</pre>
+
+</div>
+
+<div class="section">
+<h2>addEventListener()</h2>
+
+<p>
+Nowoczesna obsługa zdarzeń.
+</p>
+
+<pre>
+document.getElementById("btn").addEventListener(
+    "click",
+
+    function(){
+        alert("Klik");
+});
+</pre>
+
+<p><b>Częstotliwość:</b> ~60%</p>
+
+</div>
+
+<div class="section">
+<h2>parseInt()</h2>
+
+<p>
+Konwersja tekstu na liczbę całkowitą.
+</p>
+
+<pre>
+let a = parseInt(
+    document.getElementById("a").value
+);
+</pre>
+
+<div class="warning">
+Bez parseInt nastąpi łączenie tekstu.
+</div>
+
+</div>
+
+<div class="section">
+<h2>parseFloat()</h2>
+
+<p>
+Konwersja na liczbę dziesiętną.
+</p>
+
+<pre>
+let cena = parseFloat(
+    document.getElementById("cena").value
+);
+</pre>
+
+</div>
+
+<div class="section">
+<h2>if</h2>
+
+<p>
+Instrukcja warunkowa.
+</p>
+
+<pre>
+if(wiek >= 18){
+    alert("Pełnoletni");
+}
+</pre>
+
+<p><b>Częstotliwość:</b> ~70%</p>
+
+</div>
+
+<div class="section">
+<h2>for</h2>
+
+<p>
+Pętla wykonywana określoną liczbę razy.
+</p>
+
+<pre>
+for(
+    let i=0;i<10;i++){
+        console.log(i);
+}
+</pre>
+
+</div>
+
+<div class="section">
+<h2>querySelector()</h2>
+
+<p>
+Pobiera pierwszy element.
+</p>
+
+<pre>
+document.querySelector(".blok");
+</pre>
+
+</div>
+
+<div class="section">
+<h2>querySelectorAll()</h2>
+
+<p>
+Pobiera wiele elementów.
+</p>
+
+<pre>
+document.querySelectorAll(".blok");
+</pre>
+
+</div>
+
+<div class="section">
+<h2>.style</h2>
+
+<p>
+Zmiana stylu przez JavaScript.
+</p>
+
+<pre>
+document.getElementById("box").style.background = "red";
+</pre>
+
+</div>
+
+<div class="section">
+<h2>classList</h2>
+
+<p>
+Dodawanie i usuwanie klas CSS.
+</p>
+
+<pre>
+element.classList.add("aktywny");
+
+element.classList.remove("aktywny");
+</pre>
+
+</div>
+
+<div class="section">
+<h2>alert()</h2>
+
+<p>
+Wyświetla okno komunikatu.
+</p>
+
+<pre>
+alert(
+    "Witaj"
+);
+</pre>
+
+</div>
+
+<div class="section">
+<h2>Math.random()</h2>
+
+<p>
+Losowanie liczby.
+</p>
+
+<pre>
+let liczba = Math.random();
+</pre>
+
+</div>
+
+<div class="section">
+<h2>Gotowiec egzaminacyjny #1</h2>
+
+<p><b>Przykładowe polecenie CKE:</b></p>
+
+<p>
+Po kliknięciu przycisku oblicz sumę dwóch liczb.
+</p>
+
+<pre>
+function licz(){
+
+let a = parseInt(
+    document.getElementById("a").value
+);
+
+let b = parseInt(
+    document.getElementById("b").value
+);
+
+document.getElementById("wynik").innerHTML = a + b;
+}
+</pre>
+
+</div>
+
+<div class="section">
+<h2>Gotowiec egzaminacyjny #2</h2>
+
+<p><b>Przykładowe polecenie CKE:</b></p>
+
+<p>
+Sprawdź czy użytkownik podał wiek większy od 18 lat.
+</p>
+
+<pre>
+let wiek = parseInt(
+    document.getElementById("wiek").value
+);
+
+if(wiek >= 18){
+    alert("Pełnoletni");
+
+}else{
+    alert("Niepełnoletni");
+}
+</pre>
+
+</div>
+
+<div class="section">
+<h2>Gotowiec egzaminacyjny #3</h2>
+
+<p><b>Przykładowe polecenie CKE:</b></p>
+
+<p>
+Po kliknięciu przycisku zmień tekst w elemencie.
+</p>
+
+<pre>
+document.getElementById("wynik").innerHTML = "Nowy tekst";
+</pre>
+
+</div>
+
+<div class="section">
+<h2>Gotowiec egzaminacyjny #4</h2>
+
+<p><b>Przykładowe polecenie CKE:</b></p>
+
+<p>
+Po kliknięciu zmień obraz na drugi.
+</p>
+
+<pre>
+document.getElementById("foto").src = "kot2.jpg";
+</pre>
+
+</div>
+
+<script>
+
+const searchInput =
+document.getElementById("searchInput");
+
+searchInput.addEventListener(
+"input",
+function(){
+
+const value =
+this.value.toLowerCase();
+
+const sections =
+document.querySelectorAll(".section");
+
+let found = 0;
+
+sections.forEach(section=>{
+
+const text =
+section.innerText.toLowerCase();
+
+if(text.includes(value)){
+
+section.style.display="block";
+found++;
+
+}
+else{
+
+section.style.display="none";
+
+}
+
+});
+
+resultsInfo.innerHTML =
+"Znaleziono sekcji: " + found;
+
+});
+
+</script>
+
+<div class="menu-container">
+
+<button class="menu-btn" id="menuBtn">
+☰
+</button>
+
+<div class="dropdown-menu" id="dropdownMenu">
+
+<a href="../sql/sql.html">💾 SQL</a>
+
+<a href="../php/php.html">🐘 PHP</a>
+
+<a href="../html/html.html">🌐 HTML</a>
+
+<a href="../css/css.html">🎨 CSS</a>
+
+<a href="../js/js.html">⚡ JavaScript</a>
+
+<a href="../ratunek/ratunek.html">
+🚑 Ratunek
+</a>
+
+</div>
+
+</div>
+<script>
+
+const menuBtn =
+document.getElementById("menuBtn");
+
+const dropdownMenu =
+document.getElementById("dropdownMenu");
+
+menuBtn.addEventListener(
+"click",
+function(){
+
+dropdownMenu.classList.toggle(
+"show"
+);
+
+});
+
+document.addEventListener(
+"click",
+function(e){
+
+if(
+!menuBtn.contains(e.target)
+&&
+!dropdownMenu.contains(e.target)
+){
+
+dropdownMenu.classList.remove(
+"show"
+);
+
+}
+
+menuBtn.addEventListener(
+"dblclick",
+function(){
+
+window.location.href =
+"../index.html";
+
+});
+
+});
+
+</script>
+</body>
+</html>

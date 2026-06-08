@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>INF.03 HUB - SQL</title>
+<style>
+body{font-family:Arial,sans-serif;background:#121212;color:#eee;max-width:1400px;margin:auto;padding:20px;line-height:1.6}
+.section{background:#1f1f1f;padding:20px;margin:20px 0;border-radius:12px}
+pre{
+background:#0b0b0b;
+border-left:4px solid #7dd3fc;
+padding:12px;
+border-radius:8px;
+overflow:auto;
+color:#d4d4d4;
+}
+h1,h2,h3{color:#7dd3fc}
+.warning{background:#5a1d1d;padding:10px;border-radius:8px}
+.info{background:#1d355a;padding:10px;border-radius:8px}
+.search-box{
+margin:20px 0;
+}
+
+#searchInput{
+width:100%;
+padding:15px;
+font-size:16px;
+background:#1f1f1f;
+color:white;
+border:1px solid #444;
+border-radius:10px;
+outline:none;
+}
+
+#searchInput:focus{
+border-color:#7dd3fc;
+box-shadow:0 0 10px rgba(125,211,252,.4);
+}
+.home-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#7dd3fc;
+color:#121212;
+text-decoration:none;
+padding:12px 18px;
+border-radius:12px;
+font-weight:bold;
+box-shadow:0 0 15px rgba(125,211,252,.4);
+transition:.2s;
+z-index:9999;
+}
+
+.home-btn:hover{
+transform:scale(1.05);
+background:#38bdf8;
+}
+
+.home-btn:active{
+transform:scale(.95);
+}
+.top-btn{
+position:fixed;
+bottom:80px;
+right:20px;
+background:#22c55e;
+color:white;
+text-decoration:none;
+padding:12px 18px;
+border-radius:12px;
+font-weight:bold;
+z-index:9999;
+}
+
+.top-btn:hover{
+background:#16a34a;
+}
+
+html{
+scroll-behavior:smooth;
+}
+.search-wrapper{
+position:sticky;
+top:0;
+z-index:1000;
+background:#121212;
+padding:15px 0;
+}
+
+.menu-btn:hover{
+background:#38bdf8;
+}
+
+.menu-container{
+position:fixed;
+bottom:20px;
+right:20px;
+z-index:9999;
+}
+
+.menu-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+
+background:#7dd3fc;
+color:#121212;
+
+border:none;
+padding:12px 18px;
+
+border-radius:12px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+z-index:10000;
+
+box-shadow:0 0 15px rgba(125,211,252,.4);
+
+transition:.2s;
+}
+
+.menu-btn:hover{
+background:#38bdf8;
+transform:scale(1.05);
+}
+
+.dropdown-menu{
+
+position:absolute;
+
+bottom:60px;
+right:0;
+
+width:240px;
+
+background:#1f1f1f;
+
+border-radius:12px;
+
+overflow:hidden;
+
+box-shadow:
+0 0 20px rgba(0,0,0,.4);
+
+opacity:0;
+visibility:hidden;
+
+transform:
+translateY(20px)
+scale(.95);
+
+transition:.25s;
+}
+
+.dropdown-menu.show{
+
+opacity:1;
+visibility:visible;
+
+transform:
+translateY(0)
+scale(1);
+}
+
+.dropdown-menu a{
+
+display:block;
+
+padding:14px;
+
+text-decoration:none;
+
+color:white;
+
+border-bottom:
+1px solid #333;
+
+transition:.2s;
+}
+
+.dropdown-menu a:hover{
+
+background:#2d3748;
+padding-left:20px;
+
+}
+
+.dropdown-menu a:last-child{
+border-bottom:none;
+}
+</style>
+</head>
+<body id="top">
+
+<h1>INF.03 HUB - SQL</h1>
+<p>Dokumentacja SQL pod egzamin INF.03. Każda sekcja zawiera opis, zastosowanie, przykłady i najczęstsze błędy.</p>
+
+<div class="search-wrapper">
+
+<div class="search-box">
+<input
+type="text"
+id="searchInput"
+placeholder="Szukaj np. JOIN, COUNT, GROUP BY..."
+>
+</div>
+
+</div>
+
+<div class="section">
+<h2>SELECT</h2>
+<p><b>Co robi?</b> Pobiera dane z tabeli.</p>
+<p><b>Częstotliwość:</b> ~90%</p>
+<pre>SELECT * FROM produkty; </pre>
+<pre>SELECT nazwa, cena FROM produkty;</pre>
+<pre>SELECT nazwa AS Produkt FROM produkty;</pre>
+<pre>SELECT DISTINCT miasto FROM klienci;</pre>
+<p><b>Błędy:</b> brak FROM, brak kolumn po SELECT.</p>
+</div>
+
+<div class="section">
+<h2>WHERE</h2>
+<p>Filtrowanie rekordów.</p>
+<pre>SELECT * FROM produkty WHERE id = 1;</pre>
+<pre>SELECT * FROM produkty WHERE cena > 100;</pre>
+<pre>SELECT * FROM produkty WHERE cena < 100;</pre>
+<pre>SELECT * FROM produkty WHERE cena >= 100;</pre>
+<pre>SELECT * FROM produkty WHERE cena <= 100;</pre>
+<pre>SELECT * FROM produkty WHERE cena <> 100;</pre>
+<p><b>Częstotliwość:</b> ~65%</p>
+</div>
+
+<div class="section">
+<h2>BETWEEN</h2>
+<p>Wybór rekordów z zakresu.</p>
+<pre>SELECT * FROM produkty WHERE cena BETWEEN 100 AND 500;</pre>
+</div>
+
+<div class="section">
+<h2>IN</h2>
+<p>Sprawdza czy wartość znajduje się na liście.</p>
+<pre>SELECT * FROM produkty WHERE id IN (1,2,3);</pre>
+</div>
+
+<div class="section">
+<h2>LIKE</h2>
+<p>Wyszukiwanie tekstu.</p>
+<pre>WHERE nazwa LIKE '%kot%';</pre>
+<pre>WHERE nazwa LIKE 'Kot%';</pre>
+<pre>WHERE nazwa LIKE '%Kot';</pre>
+<div class="warning">Najczęstszy błąd: brak apostrofów wokół wzorca.</div>
+</div>
+
+<div class="section">
+<h2>AND / OR / NOT</h2>
+<pre>SELECT * FROM produkty WHERE cena > 100 AND cena < 500;</pre>
+<pre>SELECT * FROM produkty WHERE id = 1 OR id = 2;</pre>
+<pre>SELECT * FROM produkty WHERE NOT cena > 100;</pre>
+</div>
+
+<div class="section">
+<h2>ORDER BY</h2>
+<p>Sortowanie wyników.</p>
+<pre>ORDER BY nazwa ASC;</pre>
+<pre>ORDER BY cena DESC;</pre>
+</div>
+
+<div class="section">
+<h2>LIMIT</h2>
+<p>Ograniczenie liczby rekordów.</p>
+<pre>SELECT * FROM produkty LIMIT 5;</pre>
+<pre>SELECT * FROM produkty LIMIT 5,5;</pre>
+</div>
+
+<div class="section">
+<h2>COUNT</h2>
+<p>Liczenie rekordów.</p>
+<pre>SELECT COUNT(*) FROM produkty;</pre>
+<pre>SELECT COUNT(*) FROM produkty WHERE cena > 100;</pre>
+</div>
+
+<div class="section">
+<h2>AVG / MIN / MAX / SUM</h2>
+<pre>SELECT AVG(cena) FROM produkty;</pre>
+<pre>SELECT MIN(cena) FROM produkty;</pre>
+<pre>SELECT MAX(cena) FROM produkty;</pre>
+<pre>SELECT SUM(cena) FROM produkty;</pre>
+</div>
+
+<div class="section">
+<h2>GROUP BY</h2>
+<p>Grupowanie rekordów.</p>
+<pre>SELECT kategoria, COUNT(*) FROM produkty GROUP BY kategoria;</pre>
+<p>Typowe zadanie CKE: policz elementy w każdej kategorii.</p>
+</div>
+
+<div class="section">
+<h2>HAVING</h2>
+<p>Warunek dla GROUP BY.</p>
+<pre>SELECT kategoria, COUNT(*) FROM produkty
+GROUP BY kategoria
+HAVING COUNT(*) > 5;</pre>
+</div>
+
+<div class="section">
+<h2>JOIN</h2>
+<p>Łączenie tabel.</p>
+<p><b>Częstotliwość:</b> ~80%</p>
+<pre>SELECT * FROM produkty
+JOIN kategorie ON produkty.idKat = kategorie.id;</pre>
+<div class="warning">Najczęstszy błąd: brak ON.</div>
+</div>
+
+<div class="section">
+<h2>INNER JOIN</h2>
+<pre>SELECT * FROM produkty
+INNER JOIN kategorie ON produkty.idKat = kategorie.id;</pre>
+</div>
+
+<div class="section">
+<h2>LEFT JOIN</h2>
+<pre>SELECT * FROM produkty
+LEFT JOIN kategorie ON produkty.idKat = kategorie.id;</pre>
+</div>
+
+<div class="section">
+<h2>INSERT</h2>
+<p>Dodawanie rekordów.</p>
+<pre>INSERT INTO produkty(nazwa,cena) VALUES('Laptop',5000);</pre>
+</div>
+
+<div class="section">
+<h2>UPDATE</h2>
+<pre>UPDATE produkty SET cena = 4000 WHERE id = 1;</pre>
+<div class="warning">Bez WHERE zmienisz wszystkie rekordy.</div>
+</div>
+
+<div class="section">
+<h2>DELETE</h2>
+<pre>DELETE FROM produkty WHERE id = 1;</pre>
+<div class="warning">Bez WHERE usuniesz wszystkie rekordy.</div>
+</div>
+
+<div class="section">
+<h2>ALTER TABLE</h2>
+<pre>ALTER TABLE produkty ADD opis VARCHAR(255);</pre>
+</div>
+
+<div class="section">
+<h2>CREATE TABLE</h2>
+<pre>CREATE TABLE produkty( 
+    id INT PRIMARY KEY, nazwa VARCHAR(100), cena FLOAT
+);</pre>
+</div>
+
+<div class="section">
+<h2>Funkcje dat</h2>
+<pre>SELECT CURRENT_DATE;</pre>
+<pre>SELECT CURRENT_TIME;</pre>
+<pre>SELECT DATE_ADD(CURRENT_DATE, INTERVAL 7 DAY);</pre>
+</div>
+
+<div class="section">
+<h2>Gotowiec egzaminacyjny #1</h2>
+<pre>SELECT produkty.nazwa, kategorie.nazwa FROM produkty
+JOIN kategorie ON produkty.idKat = kategorie.id
+WHERE produkty.cena > 100
+ORDER BY produkty.nazwa ASC;</pre>
+</div>
+
+<div class="section">
+<h2>Gotowiec egzaminacyjny #2</h2>
+<pre>SELECT kategoria, COUNT(*) AS liczba FROM produkty GROUP BY kategoria;</pre>
+</div>
+<script>
+
+const searchInput =
+document.getElementById("searchInput");
+
+searchInput.addEventListener(
+"input",
+function(){
+
+const value =
+this.value.toLowerCase();
+
+const sections =
+document.querySelectorAll(".section");
+
+let found = 0;
+
+sections.forEach(section=>{
+
+const text =
+section.innerText.toLowerCase();
+
+if(text.includes(value)){
+
+section.style.display="block";
+found++;
+
+}
+else{
+
+section.style.display="none";
+
+}
+
+});
+
+resultsInfo.innerHTML =
+"Znaleziono sekcji: " + found;
+
+});
+
+</script>
+
+<div class="menu-container">
+
+<button class="menu-btn" id="menuBtn">
+☰
+</button>
+
+<div class="dropdown-menu" id="dropdownMenu">
+
+<a href="../sql/sql.html">💾 SQL</a>
+
+<a href="../php/php.html">🐘 PHP</a>
+
+<a href="../html/html.html">🌐 HTML</a>
+
+<a href="../css/css.html">🎨 CSS</a>
+
+<a href="../js/js.html">⚡ JavaScript</a>
+
+<a href="../ratunek/ratunek.html">
+🚑 Ratunek
+</a>
+
+</div>
+
+</div>
+<script>
+
+const menuBtn =
+document.getElementById("menuBtn");
+
+const dropdownMenu =
+document.getElementById("dropdownMenu");
+
+menuBtn.addEventListener(
+"click",
+function(){
+
+dropdownMenu.classList.toggle(
+"show"
+);
+
+});
+
+document.addEventListener(
+"click",
+function(e){
+
+if(
+!menuBtn.contains(e.target)
+&&
+!dropdownMenu.contains(e.target)
+){
+
+dropdownMenu.classList.remove(
+"show"
+);
+
+}
+
+menuBtn.addEventListener(
+"dblclick",
+function(){
+
+window.location.href =
+"../index.html";
+
+});
+
+});
+
+</script>
+</body>
+</html>

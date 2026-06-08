@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>INF.03 HUB - Ratunek</title>
+<style>
+body{font-family:Arial,sans-serif;background:#121212;color:#eee;max-width:1400px;margin:auto;padding:20px;line-height:1.6}
+.section{background:#1f1f1f;padding:20px;margin:20px 0;border-radius:12px}
+pre{
+background:#0b0b0b;
+border-left:4px solid #7dd3fc;
+padding:12px;
+border-radius:8px;
+overflow:auto;
+color:#d4d4d4;
+}
+h1,h2,h3{color:#7dd3fc}
+.warning{background:#5a1d1d;padding:10px;border-radius:8px}
+.info{background:#1d355a;padding:10px;border-radius:8px}
+.search-box{
+margin:20px 0;
+}
+
+#searchInput{
+width:100%;
+padding:15px;
+font-size:16px;
+background:#1f1f1f;
+color:white;
+border:1px solid #444;
+border-radius:10px;
+outline:none;
+}
+
+#searchInput:focus{
+border-color:#7dd3fc;
+box-shadow:0 0 10px rgba(125,211,252,.4);
+}
+.home-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#7dd3fc;
+color:#121212;
+text-decoration:none;
+padding:12px 18px;
+border-radius:12px;
+font-weight:bold;
+box-shadow:0 0 15px rgba(125,211,252,.4);
+transition:.2s;
+z-index:9999;
+}
+
+.home-btn:hover{
+transform:scale(1.05);
+background:#38bdf8;
+}
+
+.home-btn:active{
+transform:scale(.95);
+}
+.top-btn{
+position:fixed;
+bottom:80px;
+right:20px;
+background:#22c55e;
+color:white;
+text-decoration:none;
+padding:12px 18px;
+border-radius:12px;
+font-weight:bold;
+z-index:9999;
+}
+
+.top-btn:hover{
+background:#16a34a;
+}
+
+html{
+scroll-behavior:smooth;
+}
+.search-wrapper{
+position:sticky;
+top:0;
+z-index:1000;
+background:#121212;
+padding:15px 0;
+}
+
+.menu-btn:hover{
+background:#38bdf8;
+}
+
+.menu-container{
+position:fixed;
+bottom:20px;
+right:20px;
+z-index:9999;
+}
+
+.menu-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+
+background:#7dd3fc;
+color:#121212;
+
+border:none;
+padding:12px 18px;
+
+border-radius:12px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+z-index:10000;
+
+box-shadow:0 0 15px rgba(125,211,252,.4);
+
+transition:.2s;
+}
+
+.menu-btn:hover{
+background:#38bdf8;
+transform:scale(1.05);
+}
+
+.dropdown-menu{
+
+position:absolute;
+
+bottom:60px;
+right:0;
+
+width:240px;
+
+background:#1f1f1f;
+
+border-radius:12px;
+
+overflow:hidden;
+
+box-shadow:
+0 0 20px rgba(0,0,0,.4);
+
+opacity:0;
+visibility:hidden;
+
+transform:
+translateY(20px)
+scale(.95);
+
+transition:.25s;
+}
+
+.dropdown-menu.show{
+
+opacity:1;
+visibility:visible;
+
+transform:
+translateY(0)
+scale(1);
+}
+
+.dropdown-menu a{
+
+display:block;
+
+padding:14px;
+
+text-decoration:none;
+
+color:white;
+
+border-bottom:
+1px solid #333;
+
+transition:.2s;
+}
+
+.dropdown-menu a:hover{
+
+background:#2d3748;
+padding-left:20px;
+
+}
+
+.dropdown-menu a:last-child{
+border-bottom:none;
+}
+</style>
+</head>
+<body id="top">
+
+<h1>🚑 INF.03 RATUNEK</h1>
+
+<p>
+Strona awaryjna na egzamin.
+Jeżeli nie wiesz co zrobić — zacznij tutaj.
+</p>
+
+<div class="search-wrapper">
+
+<div class="search-box">
+<input
+type="text"
+id="searchInput"
+placeholder="Szukaj np. SQL, PHP, HTML..."
+>
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>🚨 Kolejność wykonywania egzaminu</h2>
+
+<ol>
+
+<li>Przeczytaj CAŁE polecenie.</li>
+
+<li>Uruchom XAMPP.</li>
+
+<li>Uruchom Apache.</li>
+
+<li>Uruchom MySQL.</li>
+
+<li>Zaimportuj bazę danych.</li>
+
+<li>Otwórz phpMyAdmin.</li>
+
+<li>Sprawdź nazwy tabel.</li>
+
+<li>Zrób SQL.</li>
+
+<li>Zrób HTML.</li>
+
+<li>Zrób CSS.</li>
+
+<li>Zrób PHP.</li>
+
+<li>Zrób zrzuty ekranu.</li>
+
+</ol>
+
+</div>
+
+<div class="section">
+
+<h2>🗄 Szybki SQL</h2>
+
+<pre>
+SELECT * FROM tabela;
+</pre>
+
+<pre>
+SELECT *
+FROM tabela
+WHERE id = 1;
+</pre>
+
+<pre>
+SELECT *
+FROM tabela
+JOIN druga
+ON tabela.id =
+druga.id;
+</pre>
+
+<pre>
+INSERT INTO tabela(nazwa)
+VALUES('Test');
+</pre>
+
+<pre>
+UPDATE tabela
+SET nazwa='Nowa'
+WHERE id=1;
+</pre>
+
+<pre>
+DELETE FROM tabela
+WHERE id=1;
+</pre>
+
+</div>
+
+<div class="section">
+
+<h2>🐘 Szybki PHP</h2>
+
+<pre>
+$conn = mysqli_connect("localhost","root","","baza");
+</pre>
+
+<pre>
+$result = mysqli_query($conn,$sql);
+</pre>
+
+<pre>
+while($row = mysqli_fetch_assoc($result)){
+    echo $row['nazwa'];
+}
+</pre>
+
+</div>
+
+<div class="section">
+
+<h2>🎨 Szybki CSS</h2>
+
+<pre>
+width:300px;
+
+height:200px;
+
+background-color:blue;
+
+color:white;
+
+padding:20px;
+
+margin:20px;
+
+border-radius:10px;
+</pre>
+
+</div>
+
+<div class="section">
+
+<h2>⚡ Szybki JS</h2>
+
+<pre>
+let a = parseInt(
+    document.getElementById("a").value
+);
+</pre>
+
+<pre>
+document.getElementById("wynik").innerHTML = a;
+</pre>
+
+<pre>
+if(a > 10){
+    alert("OK");
+}
+</pre>
+
+</div>
+
+<div class="section">
+
+<h2>📸 Co musi być na zrzutach?</h2>
+
+<ul>
+
+<li>Strona działa.</li>
+
+<li>Dane z bazy się wyświetlają.</li>
+
+<li>Formularz działa.</li>
+
+<li>PHP działa.</li>
+
+<li>Wynik SQL działa.</li>
+
+<li>Widoczny adres strony.</li>
+
+</ul>
+
+</div>
+
+<div class="section">
+
+<h2>❌ Najczęstsze błędy</h2>
+
+<ul>
+
+<li>Brak średnika ;</li>
+
+<li>Brak WHERE w UPDATE</li>
+
+<li>Brak WHERE w DELETE</li>
+
+<li>Zła nazwa tabeli</li>
+
+<li>Zła nazwa kolumny</li>
+
+<li>Brak mysqli_connect()</li>
+
+<li>Brak method="post"</li>
+
+<li>Literówka w id elementu JS</li>
+
+<li>Brak zamknięcia cudzysłowu</li>
+
+</ul>
+
+</div>
+
+<div class="section">
+
+<h2>🏆 Ostatnie 10 minut</h2>
+
+<ol>
+
+<li>Odśwież stronę.</li>
+
+<li>Sprawdź błędy PHP.</li>
+
+<li>Sprawdź SQL.</li>
+
+<li>Sprawdź CSS.</li>
+
+<li>Zrób wszystkie zrzuty.</li>
+
+<li>Zapisz pliki.</li>
+
+<li>Sprawdź czy wszystko jest w katalogu.</li>
+
+<li>Dopiero wtedy zgłoś zakończenie.</li>
+
+</ol>
+
+</div>
+
+<script>
+
+const searchInput =
+document.getElementById("searchInput");
+
+searchInput.addEventListener(
+"input",
+function(){
+
+const value =
+this.value.toLowerCase();
+
+const sections =
+document.querySelectorAll(".section");
+
+let found = 0;
+
+sections.forEach(section=>{
+
+const text =
+section.innerText.toLowerCase();
+
+if(text.includes(value)){
+
+section.style.display="block";
+found++;
+
+}
+else{
+
+section.style.display="none";
+
+}
+
+});
+
+resultsInfo.innerHTML =
+"Znaleziono sekcji: " + found;
+
+});
+
+</script>
+
+<div class="menu-container">
+
+<button class="menu-btn" id="menuBtn">
+☰
+</button>
+
+<div class="dropdown-menu" id="dropdownMenu">
+
+<a href="../sql/sql.html">💾 SQL</a>
+
+<a href="../php/php.html">🐘 PHP</a>
+
+<a href="../html/html.html">🌐 HTML</a>
+
+<a href="../css/css.html">🎨 CSS</a>
+
+<a href="../js/js.html">⚡ JavaScript</a>
+
+<a href="../ratunek/ratunek.html">
+🚑 Ratunek
+</a>
+
+</div>
+
+</div>
+<script>
+
+const menuBtn =
+document.getElementById("menuBtn");
+
+const dropdownMenu =
+document.getElementById("dropdownMenu");
+
+menuBtn.addEventListener(
+"click",
+function(){
+
+dropdownMenu.classList.toggle(
+"show"
+);
+
+});
+
+document.addEventListener(
+"click",
+function(e){
+
+if(
+!menuBtn.contains(e.target)
+&&
+!dropdownMenu.contains(e.target)
+){
+
+dropdownMenu.classList.remove(
+"show"
+);
+
+}
+
+menuBtn.addEventListener(
+"dblclick",
+function(){
+
+window.location.href =
+"../index.html";
+
+});
+
+});
+
+</script>
+</body>
+</html>

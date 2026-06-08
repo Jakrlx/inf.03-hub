@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>INF.03 HUB - HTML</title>
+<style>
+body{font-family:Arial,sans-serif;background:#121212;color:#eee;max-width:1400px;margin:auto;padding:20px;line-height:1.6}
+.section{background:#1f1f1f;padding:20px;margin:20px 0;border-radius:12px}
+pre{
+background:#0b0b0b;
+border-left:4px solid #7dd3fc;
+padding:12px;
+border-radius:8px;
+overflow:auto;
+color:#d4d4d4;
+}
+h1,h2,h3{color:#7dd3fc}
+.warning{background:#5a1d1d;padding:10px;border-radius:8px}
+.info{background:#1d355a;padding:10px;border-radius:8px}
+.search-box{
+margin:20px 0;
+}
+
+#searchInput{
+width:100%;
+padding:15px;
+font-size:16px;
+background:#1f1f1f;
+color:white;
+border:1px solid #444;
+border-radius:10px;
+outline:none;
+}
+
+#searchInput:focus{
+border-color:#7dd3fc;
+box-shadow:0 0 10px rgba(125,211,252,.4);
+}
+.home-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#7dd3fc;
+color:#121212;
+text-decoration:none;
+padding:12px 18px;
+border-radius:12px;
+font-weight:bold;
+box-shadow:0 0 15px rgba(125,211,252,.4);
+transition:.2s;
+z-index:9999;
+}
+
+.home-btn:hover{
+transform:scale(1.05);
+background:#38bdf8;
+}
+
+.home-btn:active{
+transform:scale(.95);
+}
+.top-btn{
+position:fixed;
+bottom:80px;
+right:20px;
+background:#22c55e;
+color:white;
+text-decoration:none;
+padding:12px 18px;
+border-radius:12px;
+font-weight:bold;
+z-index:9999;
+}
+
+.top-btn:hover{
+background:#16a34a;
+}
+
+html{
+scroll-behavior:smooth;
+}
+.search-wrapper{
+position:sticky;
+top:0;
+z-index:1000;
+background:#121212;
+padding:15px 0;
+}
+
+.menu-btn:hover{
+background:#38bdf8;
+}
+
+.menu-container{
+position:fixed;
+bottom:20px;
+right:20px;
+z-index:9999;
+}
+
+.menu-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+
+background:#7dd3fc;
+color:#121212;
+
+border:none;
+padding:12px 18px;
+
+border-radius:12px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+z-index:10000;
+
+box-shadow:0 0 15px rgba(125,211,252,.4);
+
+transition:.2s;
+}
+
+.menu-btn:hover{
+background:#38bdf8;
+transform:scale(1.05);
+}
+
+.dropdown-menu{
+
+position:absolute;
+
+bottom:60px;
+right:0;
+
+width:240px;
+
+background:#1f1f1f;
+
+border-radius:12px;
+
+overflow:hidden;
+
+box-shadow:
+0 0 20px rgba(0,0,0,.4);
+
+opacity:0;
+visibility:hidden;
+
+transform:
+translateY(20px)
+scale(.95);
+
+transition:.25s;
+}
+
+.dropdown-menu.show{
+
+opacity:1;
+visibility:visible;
+
+transform:
+translateY(0)
+scale(1);
+}
+
+.dropdown-menu a{
+
+display:block;
+
+padding:14px;
+
+text-decoration:none;
+
+color:white;
+
+border-bottom:
+1px solid #333;
+
+transition:.2s;
+}
+
+.dropdown-menu a:hover{
+
+background:#2d3748;
+padding-left:20px;
+
+}
+
+.dropdown-menu a:last-child{
+border-bottom:none;
+}
+</style>
+</head>
+<body id="top">
+
+<h1>INF.03 HUB - HTML</h1>
+<p>Dokumentacja HTML pod egzamin INF.03. Każda sekcja zawiera opis, zastosowanie, przykłady i najczęstsze błędy.</p>
+
+<div class="search-wrapper">
+
+<div class="search-box">
+<input
+type="text"
+id="searchInput"
+placeholder="Szukaj np. <div>, <p>, <a>..."
+>
+</div>
+
+</div>
+
+<div class="section">
+<h2>Struktura strony HTML</h2>
+
+<p><b>Co robi?</b></p>
+
+<p>Podstawowy szablon każdej strony.</p>
+
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;title&gt;Strona&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+</pre>
+
+<p><b>Częstotliwość:</b> ~100%</p>
+
+</div>
+
+<div class="section">
+<h2>Nagłówki</h2>
+
+<p>Służą do tworzenia tytułów.</p>
+
+<pre>
+&lt;h1&gt;Tytuł główny&lt;/h1&gt;
+
+&lt;h2&gt;Podtytuł&lt;/h2&gt;
+
+&lt;h3&gt;Mniejszy nagłówek&lt;/h3&gt;
+</pre>
+
+</div>
+
+<div class="section">
+<h2>Akapit</h2>
+
+<pre>
+&lt;p&gt;
+To jest akapit.
+&lt;/p&gt;
+</pre>
+
+</div>
+
+<div class="section">
+<h2>Link</h2>
+
+<pre>
+&lt;a href="https://google.pl"&gt;
+Google
+&lt;/a&gt;
+</pre>
+
+</div>
+
+<div class="section">
+<h2>Obraz</h2>
+
+<pre>
+&lt;img src="zdjecie.jpg" alt="Opis"&gt;
+</pre>
+
+<p><b>Typowe polecenie CKE:</b></p>
+
+<p>Wyświetl obraz o nazwie kot.jpg.</p>
+
+</div>
+
+<div class="section">
+<h2>Lista nieuporządkowana (ul)</h2>
+
+<pre>
+&lt;ul&gt;
+
+    &lt;li&gt;Element 1&lt;/li&gt;
+
+    &lt;li&gt;Element 2&lt;/li&gt;
+
+&lt;/ul&gt;
+</pre>
+
+</div>
+
+<div class="section">
+<h2>Lista uporządkowana (ol)</h2>
+
+<pre>
+&lt;ol&gt;
+
+    &lt;li&gt;Pierwszy&lt;/li&gt;
+
+    &lt;li&gt;Drugi&lt;/li&gt;
+
+&lt;/ol&gt;
+</pre>
+
+</div>
+
+<div class="section">
+<h2>Tabela HTML</h2>
+
+<pre>
+&lt;table&gt;
+
+&lt;tr&gt;
+    &lt;th&gt;ID&lt;/th&gt;
+    &lt;th&gt;Nazwa&lt;/th&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;Laptop&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;/table&gt;
+</pre>
+
+<p><b>Częstotliwość:</b> ~70%</p>
+
+</div>
+
+<div class="section">
+<h2>Formularz</h2>
+
+<pre>
+&lt;form action="" method="post"&gt;
+
+&lt;/form&gt;
+</pre>
+
+<p><b>Częstotliwość:</b> ~90%</p>
+
+</div>
+
+<div class="section">
+<h2>Input text</h2>
+
+<pre>
+&lt;input type="text" name="imie"&gt;
+</pre>
+
+</div>
+
+<div class="section">
+<h2>Input number</h2>
+
+<pre>
+&lt;input type="number" name="wiek"&gt;
+</pre>
+
+</div>
+
+<div class="section">
+<h2>Input password</h2>
+
+<pre>
+&lt;input type="password" name="haslo"&gt;
+</pre>
+
+</div>
+
+<div class="section">
+<h2>Input date</h2>
+
+<pre>
+&lt;input type="date" name="data"&gt;
+</pre>
+
+</div>
+
+<div class="section">
+<h2>Input email</h2>
+
+<pre>
+&lt;input type="email" name="email"&gt;
+</pre>
+
+</div>
+
+<div class="section">
+<h2>Radio</h2>
+
+<pre>
+&lt;input type="radio" name="plec" value="K"&gt;
+
+Kobieta
+
+&lt;input type="radio" name="plec" value="M"&gt;
+
+Mężczyzna
+</pre>
+
+<p><b>Częstotliwość:</b> ~40%</p>
+
+</div>
+
+<div class="section">
+<h2>Checkbox</h2>
+
+<pre>
+&lt;input type="checkbox" name="zgoda"&gt;
+</pre>
+
+</div>
+
+<div class="section">
+<h2>Select</h2>
+
+<pre>
+&lt;select name="miasto"&gt;
+
+&lt;option&gt;Poznań&lt;/option&gt;
+
+&lt;option&gt;Warszawa&lt;/option&gt;
+
+&lt;/select&gt;
+</pre>
+
+<p><b>Częstotliwość:</b> ~50%</p>
+
+</div>
+
+<div class="section">
+<h2>Textarea</h2>
+
+<pre>
+&lt;textarea name="opis"&gt;
+&lt;/textarea&gt;
+</pre>
+
+</div>
+
+<div class="section">
+<h2>Button</h2>
+
+<pre>
+&lt;button&gt;
+
+    Wyślij
+
+&lt;/button&gt;
+</pre>
+
+</div>
+
+<div class="section">
+<h2>Div</h2>
+
+<pre>
+&lt;div&gt;
+
+    Treść
+
+&lt;/div&gt;
+</pre>
+
+<p><b>Częstotliwość:</b> ~95%</p>
+
+</div>
+
+<div class="section">
+<h2>Semantic Tags</h2>
+
+<pre>
+&lt;header&gt;&lt;/header&gt;
+
+&lt;main&gt;&lt;/main&gt;
+
+&lt;section&gt;&lt;/section&gt;
+
+&lt;article&gt;&lt;/article&gt;
+
+&lt;footer&gt;&lt;/footer&gt;
+</pre>
+
+</div>
+
+<div class="section">
+<h2>Gotowiec egzaminacyjny #1</h2>
+
+<p><b>Przykładowe polecenie CKE:</b></p>
+
+<p>
+Wykonaj formularz zawierający
+pole tekstowe oraz przycisk.
+</p>
+
+<pre>
+&lt;form method="post"&gt;
+
+&lt;input type="text" name="imie"&gt;
+
+&lt;button&gt;
+    Wyślij
+&lt;/button&gt;
+
+&lt;/form&gt;
+</pre>
+
+</div>
+
+<div class="section">
+<h2>Gotowiec egzaminacyjny #2</h2>
+
+<p><b>Przykładowe polecenie CKE:</b></p>
+
+<p>
+Wykonaj tabelę z nagłówkami.
+</p>
+
+<pre>
+&lt;table&gt;
+
+&lt;tr&gt;
+    &lt;th&gt;ID&lt;/th&gt;
+    &lt;th&gt;Nazwa&lt;/th&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;Laptop&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;/table&gt;
+</pre>
+
+</div>
+
+<div class="section">
+<h2>Gotowiec egzaminacyjny #3</h2>
+
+<p><b>Przykładowe polecenie CKE:</b></p>
+
+<p>
+Wyświetl zdjęcie i podpis pod nim.
+</p>
+
+<pre>
+&lt;img src="obraz.jpg" alt="Zdjęcie"&gt;
+
+&lt;p&gt;
+Opis zdjęcia
+&lt;/p&gt;
+</pre>
+
+</div>
+
+<script>
+
+const searchInput =
+document.getElementById("searchInput");
+
+searchInput.addEventListener(
+"input",
+function(){
+
+const value =
+this.value.toLowerCase();
+
+const sections =
+document.querySelectorAll(".section");
+
+let found = 0;
+
+sections.forEach(section=>{
+
+const text =
+section.innerText.toLowerCase();
+
+if(text.includes(value)){
+
+section.style.display="block";
+found++;
+
+}
+else{
+
+section.style.display="none";
+
+}
+
+});
+
+resultsInfo.innerHTML =
+"Znaleziono sekcji: " + found;
+
+});
+
+</script>
+
+<div class="menu-container">
+
+<button class="menu-btn" id="menuBtn">
+☰
+</button>
+
+<div class="dropdown-menu" id="dropdownMenu">
+
+<a href="../sql/sql.html">💾 SQL</a>
+
+<a href="../php/php.html">🐘 PHP</a>
+
+<a href="../html/html.html">🌐 HTML</a>
+
+<a href="../css/css.html">🎨 CSS</a>
+
+<a href="../js/js.html">⚡ JavaScript</a>
+
+<a href="../ratunek/ratunek.html">
+🚑 Ratunek
+</a>
+
+</div>
+
+</div>
+<script>
+
+const menuBtn =
+document.getElementById("menuBtn");
+
+const dropdownMenu =
+document.getElementById("dropdownMenu");
+
+menuBtn.addEventListener(
+"click",
+function(){
+
+dropdownMenu.classList.toggle(
+"show"
+);
+
+});
+
+document.addEventListener(
+"click",
+function(e){
+
+if(
+!menuBtn.contains(e.target)
+&&
+!dropdownMenu.contains(e.target)
+){
+
+dropdownMenu.classList.remove(
+"show"
+);
+
+}
+
+menuBtn.addEventListener(
+"dblclick",
+function(){
+
+window.location.href =
+"../index.html";
+
+});
+
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>INF.03 HUB - CSS</title>
+<style>
+body{font-family:Arial,sans-serif;background:#121212;color:#eee;max-width:1400px;margin:auto;padding:20px;line-height:1.6}
+.section{background:#1f1f1f;padding:20px;margin:20px 0;border-radius:12px}
+pre{
+background:#0b0b0b;
+border-left:4px solid #7dd3fc;
+padding:12px;
+border-radius:8px;
+overflow:auto;
+color:#d4d4d4;
+}
+h1,h2,h3{color:#7dd3fc}
+.warning{background:#5a1d1d;padding:10px;border-radius:8px}
+.info{background:#1d355a;padding:10px;border-radius:8px}
+.search-box{
+margin:20px 0;
+}
+
+#searchInput{
+width:100%;
+padding:15px;
+font-size:16px;
+background:#1f1f1f;
+color:white;
+border:1px solid #444;
+border-radius:10px;
+outline:none;
+}
+
+#searchInput:focus{
+border-color:#7dd3fc;
+box-shadow:0 0 10px rgba(125,211,252,.4);
+}
+.home-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#7dd3fc;
+color:#121212;
+text-decoration:none;
+padding:12px 18px;
+border-radius:12px;
+font-weight:bold;
+box-shadow:0 0 15px rgba(125,211,252,.4);
+transition:.2s;
+z-index:9999;
+}
+
+.home-btn:hover{
+transform:scale(1.05);
+background:#38bdf8;
+}
+
+.home-btn:active{
+transform:scale(.95);
+}
+.top-btn{
+position:fixed;
+bottom:80px;
+right:20px;
+background:#22c55e;
+color:white;
+text-decoration:none;
+padding:12px 18px;
+border-radius:12px;
+font-weight:bold;
+z-index:9999;
+}
+
+.top-btn:hover{
+background:#16a34a;
+}
+
+html{
+scroll-behavior:smooth;
+}
+.search-wrapper{
+position:sticky;
+top:0;
+z-index:1000;
+background:#121212;
+padding:15px 0;
+}
+
+.menu-btn:hover{
+background:#38bdf8;
+}
+
+.menu-container{
+position:fixed;
+bottom:20px;
+right:20px;
+z-index:9999;
+}
+
+.menu-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+
+background:#7dd3fc;
+color:#121212;
+
+border:none;
+padding:12px 18px;
+
+border-radius:12px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+z-index:10000;
+
+box-shadow:0 0 15px rgba(125,211,252,.4);
+
+transition:.2s;
+}
+
+.menu-btn:hover{
+background:#38bdf8;
+transform:scale(1.05);
+}
+
+.dropdown-menu{
+
+position:absolute;
+
+bottom:60px;
+right:0;
+
+width:240px;
+
+background:#1f1f1f;
+
+border-radius:12px;
+
+overflow:hidden;
+
+box-shadow:
+0 0 20px rgba(0,0,0,.4);
+
+opacity:0;
+visibility:hidden;
+
+transform:
+translateY(20px)
+scale(.95);
+
+transition:.25s;
+}
+
+.dropdown-menu.show{
+
+opacity:1;
+visibility:visible;
+
+transform:
+translateY(0)
+scale(1);
+}
+
+.dropdown-menu a{
+
+display:block;
+
+padding:14px;
+
+text-decoration:none;
+
+color:white;
+
+border-bottom:
+1px solid #333;
+
+transition:.2s;
+}
+
+.dropdown-menu a:hover{
+
+background:#2d3748;
+padding-left:20px;
+
+}
+
+.dropdown-menu a:last-child{
+border-bottom:none;
+}
+</style>
+</head>
+<body id="top">
+
+<h1>INF.03 HUB - CSS</h1>
+<p>Dokumentacja CSS pod egzamin INF.03. Każda sekcja zawiera opis, zastosowanie, przykłady i najczęstsze błędy.</p>
+
+<div class="search-wrapper">
+
+<div class="search-box">
+<input
+type="text"
+id="searchInput"
+placeholder="Szukaj np. flex, float, hover..."
+>
+</div>
+
+</div>
+
+<div class="section">
+<h2>width / height</h2>
+
+<p><b>Co robi?</b></p>
+
+<p>
+Określa szerokość i wysokość elementu.
+</p>
+
+<p><b>Kiedy używać?</b></p>
+
+<ul>
+<li>kontenery</li>
+<li>obrazy</li>
+<li>sekcje strony</li>
+</ul>
+
+<pre>
+width:300px;
+
+height:200px;
+</pre>
+
+<p><b>Typowe polecenie CKE:</b></p>
+
+<p>
+Ustaw szerokość bloku na 300px
+oraz wysokość na 200px.
+</p>
+
+<p><b>Częstotliwość:</b> ~80%</p>
+
+</div>
+
+<div class="section">
+<h2>background-color</h2>
+
+<p><b>Co robi?</b></p>
+
+<p>
+Ustawia kolor tła elementu.
+</p>
+
+<pre>
+background-color: blue;
+</pre>
+
+<pre>
+background-color: #1d355a;
+</pre>
+
+<p><b>Częstotliwość:</b> ~90%</p>
+
+</div>
+
+<div class="section">
+<h2>color</h2>
+
+<p>
+Ustawia kolor tekstu.
+</p>
+
+<pre>
+color: white;
+</pre>
+
+<p><b>Częstotliwość:</b> ~90%</p>
+
+</div>
+
+<div class="section">
+<h2>margin</h2>
+
+<p><b>Co robi?</b></p>
+
+<p>
+Tworzy odstęp na zewnątrz elementu.
+</p>
+
+<pre>
+margin:20px;
+</pre>
+
+<pre>
+margin-top:20px;
+</pre>
+
+<pre>
+margin-bottom:20px;
+</pre>
+
+<p><b>Najczęstszy błąd:</b></p>
+
+<div class="warning">
+Mylenie margin z padding.
+</div>
+
+<p><b>Częstotliwość:</b> ~95%</p>
+
+</div>
+
+<div class="section">
+<h2>padding</h2>
+
+<p>
+Tworzy odstęp wewnątrz elementu.
+</p>
+
+<pre>
+padding:20px;
+</pre>
+
+<pre>
+padding-left:10px;
+</pre>
+
+<p><b>Częstotliwość:</b> ~95%</p>
+
+</div>
+
+<div class="section">
+<h2>border</h2>
+
+<p>
+Tworzy obramowanie.
+</p>
+
+<pre>
+border:1px solid black;
+</pre>
+
+<pre>
+border:2px dashed red;
+</pre>
+
+<p><b>Częstotliwość:</b> ~70%</p>
+
+</div>
+
+<div class="section">
+<h2>border-radius</h2>
+
+<p>
+Zaokrągla rogi.
+</p>
+
+<pre>
+border-radius:10px;
+</pre>
+
+<pre>
+border-radius:50%;
+</pre>
+
+<p><b>Typowe polecenie CKE:</b></p>
+
+<p>
+Zaokrągl rogi przycisku o 10px.
+</p>
+
+</div>
+
+<div class="section">
+<h2>text-align</h2>
+
+<p>
+Wyrównanie tekstu.
+</p>
+
+<pre>
+text-align:center;
+</pre>
+
+<pre>
+text-align:left;
+</pre>
+
+<pre>
+text-align:right;
+</pre>
+
+<p><b>Częstotliwość:</b> ~70%</p>
+
+</div>
+
+<div class="section">
+<h2>display:flex</h2>
+
+<p><b>Co robi?</b></p>
+
+<p>
+Ustawia nowoczesny układ elementów.
+</p>
+
+<pre>
+display:flex;
+</pre>
+
+<pre>
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+</pre>
+
+<p><b>Typowe zadanie CKE:</b></p>
+
+<p>
+Wyśrodkuj elementy w poziomie.
+</p>
+
+<p><b>Częstotliwość:</b> ~85%</p>
+
+</div>
+
+<div class="section">
+<h2>justify-content</h2>
+
+<pre>
+justify-content:center;
+</pre>
+
+<pre>
+justify-content:space-between;
+</pre>
+
+<pre>
+justify-content:space-around;
+</pre>
+
+</div>
+
+<div class="section">
+<h2>align-items</h2>
+
+<pre>
+align-items:center;
+</pre>
+
+<pre>
+align-items:flex-start;
+</pre>
+
+<pre>
+align-items:flex-end;
+</pre>
+
+</div>
+
+<div class="section">
+<h2>:hover</h2>
+
+<p>
+Efekt po najechaniu myszką.
+</p>
+
+<pre>
+button:hover{
+
+background:red;
+
+}
+</pre>
+
+<p><b>Częstotliwość:</b> ~50%</p>
+
+</div>
+
+<div class="section">
+<h2>float</h2>
+
+<p>
+Stary sposób układania elementów.
+</p>
+
+<pre>
+float:left;
+</pre>
+
+<pre>
+float:right;
+</pre>
+
+<p><b>Częstotliwość:</b> ~40%</p>
+
+</div>
+
+<div class="section">
+<h2>overflow</h2>
+
+<p>
+Co zrobić gdy treść jest większa niż element.
+</p>
+
+<pre>
+overflow:hidden;
+</pre>
+
+<pre>
+overflow:auto;
+</pre>
+
+<pre>
+overflow:scroll;
+</pre>
+
+</div>
+
+<div class="section">
+<h2>position</h2>
+
+<p>
+Określa sposób pozycjonowania.
+</p>
+
+<pre>
+position:relative;
+</pre>
+
+<pre>
+position:absolute;
+</pre>
+
+<pre>
+position:fixed;
+</pre>
+
+<pre>
+position:sticky;
+</pre>
+
+<p><b>Częstotliwość:</b> ~60%</p>
+
+</div>
+
+<div class="section">
+<h2>z-index</h2>
+
+<p>
+Który element ma być na wierzchu.
+</p>
+
+<pre>
+z-index:100;
+</pre>
+
+</div>
+
+<div class="section">
+<h2>Gotowiec egzaminacyjny #1</h2>
+
+<p><b>Przykładowe polecenie CKE:</b></p>
+
+<p>
+Utwórz blok o szerokości 300px,
+wysokości 200px,
+niebieskim tle
+i zaokrąglonych rogach.
+</p>
+
+<pre>
+.blok{
+
+width:300px;
+
+height:200px;
+
+background-color:blue;
+
+border-radius:10px;
+
+}
+</pre>
+
+</div>
+
+<div class="section">
+<h2>Gotowiec egzaminacyjny #2</h2>
+
+<p><b>Przykładowe polecenie CKE:</b></p>
+
+<p>
+Wyśrodkuj elementy za pomocą Flexbox.
+</p>
+
+<pre>
+.container{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+}
+</pre>
+
+</div>
+
+<div class="section">
+<h2>Gotowiec egzaminacyjny #3</h2>
+
+<p><b>Przykładowe polecenie CKE:</b></p>
+
+<p>
+Po najechaniu myszką zmień kolor przycisku.
+</p>
+
+<pre>
+button:hover{
+
+background:red;
+
+color:white;
+
+}
+</pre>
+
+</div>
+
+<script>
+
+const searchInput =
+document.getElementById("searchInput");
+
+searchInput.addEventListener(
+"input",
+function(){
+
+const value =
+this.value.toLowerCase();
+
+const sections =
+document.querySelectorAll(".section");
+
+let found = 0;
+
+sections.forEach(section=>{
+
+const text =
+section.innerText.toLowerCase();
+
+if(text.includes(value)){
+
+section.style.display="block";
+found++;
+
+}
+else{
+
+section.style.display="none";
+
+}
+
+});
+
+resultsInfo.innerHTML =
+"Znaleziono sekcji: " + found;
+
+});
+
+</script>
+
+<div class="menu-container">
+
+<button class="menu-btn" id="menuBtn">
+☰
+</button>
+
+<div class="dropdown-menu" id="dropdownMenu">
+
+<a href="../sql/sql.html">💾 SQL</a>
+
+<a href="../php/php.html">🐘 PHP</a>
+
+<a href="../html/html.html">🌐 HTML</a>
+
+<a href="../css/css.html">🎨 CSS</a>
+
+<a href="../js/js.html">⚡ JavaScript</a>
+
+<a href="../ratunek/ratunek.html">
+🚑 Ratunek
+</a>
+
+</div>
+
+</div>
+<script>
+
+const menuBtn =
+document.getElementById("menuBtn");
+
+const dropdownMenu =
+document.getElementById("dropdownMenu");
+
+menuBtn.addEventListener(
+"click",
+function(){
+
+dropdownMenu.classList.toggle(
+"show"
+);
+
+});
+
+document.addEventListener(
+"click",
+function(e){
+
+if(
+!menuBtn.contains(e.target)
+&&
+!dropdownMenu.contains(e.target)
+){
+
+dropdownMenu.classList.remove(
+"show"
+);
+
+}
+
+menuBtn.addEventListener(
+"dblclick",
+function(){
+
+window.location.href =
+"../index.html";
+
+});
+
+});
+
+</script>
+</body>
+</html>
