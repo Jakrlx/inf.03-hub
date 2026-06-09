@@ -532,6 +532,107 @@ echo $row['liczba'];
 </pre>
 
 </div>
+
+<div class="section">
+<h2>Gotowiec egzaminacyjny #Radzim1 - Połączenie z bazą danych + SQL [ft. Kazik]</h2>
+<p>
+    Najprostszy i najczęściej spotykany schemat PHP + MySQL wygląda tak:
+</p>
+<pre>
+?php
+
+// Połączenie z bazą
+$conn = new mysqli(
+    "localhost",
+    "root",
+    "",
+    "samochody"
+);
+
+// Sprawdzenie połączenia
+if ($conn->connect_error) {
+    die("Błąd połączenia: " . $conn->connect_error);
+}
+
+// Zapytanie SQL
+$sql = "SELECT * FROM pojazdy";
+
+// Wysłanie zapytania do bazy
+$result = $conn->query($sql);
+
+// Odczyt wyników
+if ($result->num_rows > 0) {
+
+    while ($row = $result->fetch_assoc()) {
+
+        echo "Marka: " . $row["marka"] . "<br>";
+        echo "Model: " . $row["model"] . "<br>";
+        echo "Cena: " . $row["cena"] . "<br><br>";
+
+    }
+
+} else {
+    echo "Brak rekordów";
+}
+
+// Zamknięcie połączenia
+$conn->close();
+
+?>
+</pre>
+</div>
+
+<div class="section">
+<h2>Gotowiec egzaminacyjny #Radzim2 - Pobranie tylko pierwszego rekordu</h2>
+
+<p>Jeśli chcesz pobrać tylko pierwszy rekord: </p>
+
+<pre>
+$result = $conn->query($sql);
+
+$row = $result->fetch_assoc();
+
+echo $row["marka"];
+echo $row["model"];
+</pre>
+</div>
+
+<div class="section">
+<h2>Gotowiec egzaminacyjny #Radzim3 - W stylu egzaminu INF.03</h2>
+
+<p>Typowe zadanie na egzaminie INF.03: </p>
+
+<pre>
+?php
+
+$polaczenie = mysqli_connect(
+    "localhost",
+    "root",
+    "",
+    "samochody"
+);
+
+$zapytanie = "SELECT marka, model, cena FROM pojazdy";
+
+$wynik = mysqli_query(
+    $polaczenie,
+    $zapytanie
+);
+
+while($wiersz = mysqli_fetch_array($wynik))
+{
+    echo $wiersz['marka'] . " ";
+    echo $wiersz['model'] . " ";
+    echo $wiersz['cena'];
+    echo "<br>";
+}
+
+mysqli_close($polaczenie);
+
+?>
+</pre>
+</div>
+
 <script>
 
 const searchInput =

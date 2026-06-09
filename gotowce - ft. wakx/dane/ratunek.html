@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>RATUNEK INF.03</title>
+    <style>
+        body { font-family: Georgia, serif; background-color: #f5f5f5; color: #111; padding: 20px; }
+        h1, h2 { color: #1B5E20; }
+        h2 { margin-top: 30px; }
+        section { background-color: #e0f2f1; padding: 15px; margin-bottom: 20px; border-radius: 10px; }
+        code { background-color: #eee; padding: 2px 5px; border-radius: 3px; font-family: monospace; }
+        pre { background-color: #eee; padding: 10px; border-radius: 5px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+
+<h1>📟 RATUNEK INF.03</h1>
+
+<section>
+    <h2>1. Podstawy HTML</h2>
+    <p>Każda strona musi mieć: <code>&lt;!DOCTYPE html&gt;</code>, <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code> i <code>&lt;body&gt;</code></p>
+    <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Tytuł&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  ...
+&lt;/body&gt;
+&lt;/html&gt;
+    </pre>
+</section>
+
+<section>
+    <h2>2. JavaScript</h2>
+    <pre>
+let x = 5;
+const y = "tekst";
+
+function f(a){ return a*2; }
+
+document.getElementById('btn').onclick = function() {
+    document.getElementById('tekst').innerHTML = "Nowy tekst";
+};
+    </pre>
+</section>
+
+<section>
+    <h2>3. PHP + MySQL</h2>
+    <pre>
+&lt;?php
+$conn = mysqli_connect("localhost","root","","medica");
+if(!$conn) die("Błąd połączenia");
+
+$wynik = mysqli_query($conn,"SELECT * FROM abonamenty");
+while($row = mysqli_fetch_assoc($wynik)){
+    echo "&lt;p&gt;".$row['nazwa']." - ".$row['cena']." zł&lt;/p&gt;";
+}
+?&gt;
+    </pre>
+</section>
+
+<section>
+    <h2>4. SQL - podstawowe zapytania</h2>
+    <pre>
+SELECT * FROM tabela;
+SELECT nazwa, cena FROM abonamenty;
+INSERT INTO abonamenty (nazwa, cena) VALUES ('Nowy', 123);
+CREATE TABLE abonamenty (id INT AUTO_INCREMENT PRIMARY KEY, nazwa VARCHAR(50), cena INT);
+    </pre>
+</section>
+
+<section>
+    <h2>5. CSS - szybki skrót</h2>
+    <pre>
+p { color: blue; }
+#id { font-size: 20px; }
+.klasa { background: yellow; }
+button:hover { background-color: #555; }
+    </pre>
+</section>
+
+<section>
+    <h2>6. Formlarze HTML + PHP</h2>
+    <pre>
+&lt;form action="odbierz.php" method="post"&gt;
+    &lt;input type="text" name="imie" placeholder="Imię"&gt;
+    &lt;input type="submit" value="Wyślij"&gt;
+&lt;/form&gt;
+
+&lt;?php
+$imie = $_POST['imie'] ?? '';
+echo "Witaj, ".htmlspecialchars($imie);
+?&gt;
+    </pre>
+</section>
+
+<section>
+    <h2>7. Debugowanie</h2>
+    <pre>
+// JS
+console.log("test");
+alert("test");
+
+// PHP
+var_dump($zmienna);
+error_reporting(E_ALL);
+ini_set('display_errors',1);
+    </pre>
+</section>
+
+</body>
+</html>

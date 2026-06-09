@@ -1,0 +1,220 @@
+HTML – KOMPLETNA ŚCIĄGA (INF.03)
+================================
+
+SPIS TREŚCI
+-----------
+[1] Informacje ogólne HTML
+[2] Struktura dokumentu
+[3] Metadane (<head>)
+[4] Znaczniki tekstowe
+[5] Listy
+[6] Linki i multimedia
+[7] Tabele
+[8] Formularze
+[9] Semantyka HTML5
+[10] Atrybuty globalne
+[11] Komentarze i encje
+[12] Najczęstsze błędy (EGZAMIN)
+
+
+--------------------------------------------------
+[1] INFORMACJE OGÓLNE HTML
+--------------------------------------------------
+HTML – HyperText Markup Language  
+Język znaczników do tworzenia struktury strony WWW.
+
+Cechy:
+- pliki .html / .htm
+- znacznik otwierający i zamykający
+- struktura drzewiasta (DOM)
+- nie jest językiem programowania
+
+HTML5 – aktualny standard
+
+
+--------------------------------------------------
+[2] STRUKTURA DOKUMENTU HTML
+--------------------------------------------------
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+</head>
+<body>
+</body>
+</html>
+
+Znaczenie:
+<!DOCTYPE html>  – informuje przeglądarkę o wersji HTML  
+<html>           – główny znacznik dokumentu  
+<head>           – informacje o stronie  
+<body>           – zawartość widoczna  
+
+
+--------------------------------------------------
+[3] METADANE – SEKCJA
+--------------------------------------------------
+<head>
+<meta charset="UTF-8">
+<meta name="description">
+
+<hr>            linia pozioma
+
+<strong>        ważny tekst (pogrubienie)
+<b>             pogrubienie (wizualne)
+<em>            wyróżnienie (kursywa)
+<i>             kursywa (wizualna)
+
+<mark>          podświetlenie
+<small>         mniejszy tekst
+<sup>           indeks górny
+<sub>           indeks dolny
+<code>          kod
+<pre>           tekst preformatowany
+<span>          kontener liniowy
+<div>           kontener blokowy
+
+
+--------------------------------------------------
+[5] LISTY
+--------------------------------------------------
+<ul>    lista nieuporządkowana
+<ol>    lista uporządkowana
+<li>    element listy
+<dl>    lista definicji
+<dt>    termin
+<dd>    opis
+
+Atrybuty <ol>:
+type
+start
+reversed
+
+
+--------------------------------------------------
+[6] LINKI I MULTIMEDIA
+--------------------------------------------------
+<a>             link
+href            adres
+target          _blank, _self
+download        pobieranie
+
+<img>           obraz
+src             źródło
+alt             tekst alternatywny
+width / height
+
+<audio>
+<video>
+<source>
+controls
+autoplay
+loop
+muted
+
+
+--------------------------------------------------
+[7] TABELE
+--------------------------------------------------
+<table>         tabela
+<tr>            wiersz
+<td>            komórka
+<th>            nagłówek
+<caption>       tytuł tabeli
+<thead>
+<tbody>
+<tfoot>
+
+Atrybuty:
+colspan
+rowspan
+border (stary)
+
+
+--------------------------------------------------
+[8] FORMULARZE
+--------------------------------------------------
+<form>
+action
+method (GET / POST)
+
+<input>:
+type:
+text
+password
+email
+number
+date
+radio
+checkbox
+submit
+reset
+file
+hidden
+
+Atrybuty:
+name
+value
+placeholder
+required
+readonly
+disabled
+checked
+
+Inne:
+<label>
+<textarea>
+<select>
+<option>
+<button>
+
+
+--------------------------------------------------
+[9] SEMANTYKA HTML5
+--------------------------------------------------
+<header>        nagłówek
+<nav>           nawigacja
+<main>          główna treść
+<section>       sekcja
+<article>       artykuł
+<aside>         panel boczny
+<footer>        stopka
+
+Cel:
+- lepsze SEO
+- czytelność kodu
+- dostępność
+
+
+--------------------------------------------------
+[10] ATRYBUTY GLOBALNE
+--------------------------------------------------
+id
+class
+style
+title
+lang
+hidden
+tabindex
+contenteditable
+draggable
+data-*
+
+
+--------------------------------------------------
+[11] KOMENTARZE I ENCJE
+--------------------------------------------------
+Komentarz:
+
+--------------------------------------------------
+[12] NAJCZĘSTSZE BŁĘDY (INF.03)
+--------------------------------------------------
+✘ brak <!DOCTYPE html>
+✘ brak lang="pl"
+✘ brak charset UTF-8
+✘ zła struktura <head>/<body>
+✘ złe zagnieżdżenia znaczników
+✘ brak alt w <img>
+✘ zły method w <form>
+✘ literówki w nazwach znaczników
+
+KONIEC – HTML (INF.03)

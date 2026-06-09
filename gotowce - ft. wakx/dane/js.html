@@ -1,0 +1,157 @@
+<section>
+  <h2>🧠 JavaScript – podstawy (INF.03)</h2>
+  <ul>
+    <li>JavaScript służy do dynamicznych zmian HTML/CSS</li>
+    <li>Kod w pliku <b>.js</b> lub w znaczniku <code>&lt;script&gt;</code></li>
+    <li>Podpięcie pliku JS:
+      <code>&lt;script src="skrypty.js"&gt;&lt;/script&gt;</code>
+    </li>
+    <li>Konsola: <b>F12 → Console</b></li>
+  </ul>
+</section>
+
+<section>
+  <h2>📦 Zmienne</h2>
+  <pre><code>
+let a = 10;        // najczęściej używane
+const b = 5;      // stała
+var c = 3;        // stary zapis
+
+typeof a;         // sprawdza typ
+  </code></pre>
+</section>
+
+<section>
+  <h2>➕ Operatory</h2>
+  <ul>
+    <li>Arytmetyczne: + - * / % ++ --</li>
+    <li>Porównania: == === != !== &gt; &gt;= &lt; &lt;=</li>
+    <li>Logiczne: && || !</li>
+    <li>Przypisania: = += -= *= /=</li>
+  </ul>
+</section>
+
+<section>
+  <h2>🔁 Pętle</h2>
+  <pre><code>
+for(let i=0;i<5;i++){
+  console.log(i);
+}
+
+let arr = ["A","B","C"];
+arr.forEach(el => {
+  console.log(el);
+});
+  </code></pre>
+</section>
+
+<section>
+  <h2>📚 Tablice</h2>
+  <pre><code>
+let arr = [1,2,3];
+arr.push(4);
+arr.pop();
+
+arr.forEach(el => {
+  console.log(el);
+});
+  </code></pre>
+</section>
+
+<section>
+  <h2>🧱 Obiekty</h2>
+  <pre><code>
+let osoba = {
+  imie: "Jan",
+  wiek: 20
+};
+
+for(let k in osoba){
+  console.log(k, osoba[k]);
+}
+  </code></pre>
+</section>
+
+<section>
+  <h2>🖱️ Manipulacja HTML</h2>
+  <pre><code>
+document.getElementById("id").innerHTML = "Nowy tekst";
+document.getElementById("id").textContent = "Tylko tekst";
+
+document.querySelector(".klasa");
+document.querySelectorAll("li");
+  </code></pre>
+</section>
+
+<section>
+  <h2>🎯 Zdarzenia</h2>
+  <pre><code>
+document.getElementById("btn").onclick = function(){
+  alert("Klik!");
+};
+
+document.getElementById("btn")
+  .addEventListener("click", function(){
+    console.log("OK");
+  });
+  </code></pre>
+</section>
+
+<section>
+  <h2>🔀 Warunki</h2>
+  <pre><code>
+if(a > 5){
+  console.log("Większe");
+}else{
+  console.log("Mniejsze");
+}
+
+switch(a){
+  case 1: console.log("1"); break;
+  default: console.log("inne");
+}
+  </code></pre>
+</section>
+
+<section>
+  <h2>📌 Typowe zadania INF.03</h2>
+  <ul>
+    <li>Zmiana treści po kliknięciu przycisku</li>
+    <li>Generowanie listy z tablicy</li>
+    <li>Prosty <code>alert()</code> lub <code>console.log()</code></li>
+  </ul>
+</section>
+
+<section>
+  <h2>⚠️ Najczęstsze błędy</h2>
+  <ul>
+    <li>Brak id w <code>getElementById</code></li>
+    <li>JS uruchamiany przed HTML</li>
+    <li>Literówki w nazwach zmiennych</li>
+    <li><code>innerHTML</code> bez cudzysłowów</li>
+  </ul>
+</section>
+
+<section>
+  <h2>🚑 ULTRA SZYBKA WERSJA</h2>
+  <pre><code>
+document.getElementById("id").innerHTML = "tekst";
+
+let arr = [1,2,3];
+arr.forEach(e => console.log(e));
+
+function f(x){
+  return x*2;
+}
+  </code></pre>
+</section>
+
+<section>
+  <h2>✅ Wskazówki egzaminacyjne</h2>
+  <ul>
+    <li>Wystarczy czysty JS (bez frameworków)</li>
+    <li>forEach w zupełności wystarcza</li>
+    <li>alert() i console.log() do testów</li>
+    <li>Zawsze sprawdzaj id elementów</li>
+  </ul>
+</section>

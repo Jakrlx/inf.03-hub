@@ -1,0 +1,184 @@
+<section>
+  <h2>🧠 Schemat myślenia (NAJWAŻNIEJSZE)</h2>
+  <ul>
+    <li>❌ HTML <b>NIE</b> łączy się z bazą danych</li>
+    <li>✅ PHP łączy się z bazą MySQL</li>
+    <li>HTML tylko <b>wyświetla</b> dane</li>
+    <li>PHP <b>pobiera</b> dane i wstawia je do HTML</li>
+    <li>Dlatego plik na egzaminie ma rozszerzenie <b>.php</b></li>
+  </ul>
+</section>
+
+<section>
+  <h2>📁 Struktura plików – klasyk INF.03</h2>
+  <pre><code>
+/index.php
+/polaczenie.php   (bardzo zalecane)
+/styl.css
+/skrypty.js       (opcjonalnie)
+/obraz1.jpg
+  </code></pre>
+</section>
+
+<section>
+  <h2>🗄️ Baza danych – phpMyAdmin</h2>
+  <h3>1️⃣ Tworzenie bazy</h3>
+  <ul>
+    <li>Nazwa: <b>medica</b></li>
+    <li>Kodowanie: <b>utf8mb4_general_ci</b></li>
+  </ul>
+
+  <h3>2️⃣ Tworzenie tabeli</h3>
+  <pre><code>
+CREATE TABLE abonamenty (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nazwa VARCHAR(50),
+    cena INT
+);
+  </code></pre>
+
+  <h3>3️⃣ Dodawanie danych</h3>
+  <pre><code>
+INSERT INTO abonamenty (nazwa, cena) VALUES
+('Standardowy', 200),
+('Premium', 500),
+('Dziecko', 150);
+  </code></pre>
+</section>
+
+<section>
+  <h2>🔌 Połączenie z bazą – PHP</h2>
+  <p>Plik: <b>polaczenie.php</b></p>
+  <pre><code>
+&lt;?php
+$conn = mysqli_connect("localhost", "root", "", "medica");
+
+if (!$conn) {
+    die("Błąd połączenia z bazą");
+}
+?&gt;
+  </code></pre>
+
+  <h3>📌 Dane na egzaminie</h3>
+  <ul>
+    <li>serwer: <b>localhost</b></li>
+    <li>login: <b>root</b></li>
+    <li>hasło: <b>puste ""</b></li>
+  </ul>
+</section>
+
+<section>
+  <h2>🌐 index.php – PHP + HTML</h2>
+  <pre><code>
+&lt;?php
+require_once "polaczenie.php";
+
+$zapytanie = "SELECT * FROM abonamenty";
+$wynik = mysqli_query($conn, $zapytanie);
+?&gt;
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Przychodnia Medica&lt;/title&gt;
+  &lt;link rel="stylesheet" href="styl.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;header&gt;
+  &lt;h1&gt;Abonamenty&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+
+&lt;?php
+while ($wiersz = mysqli_fetch_assoc($wynik)) {
+    echo "&lt;section&gt;";
+    echo "&lt;h2&gt;" . $wiersz['nazwa'] . "&lt;/h2&gt;";
+    echo "&lt;p&gt;Cena: " . $wiersz['cena'] . " zł&lt;/p&gt;";
+    echo "&lt;/section&gt;";
+}
+?&gt;
+
+&lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+  </code></pre>
+</section>
+
+<section>
+  <h2>🎨 styl.css – minimum egzaminacyjne</h2>
+  <pre><code>
+* {
+  font-family: Georgia;
+}
+
+header {
+  background-color: #1B5E20;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+main {
+  display: flex;
+  justify-content: space-around;
+}
+
+section {
+  background-color: #00E676;
+  width: 30%;
+  padding: 10px;
+  border-radius: 10px;
+}
+  </code></pre>
+</section>
+
+<section>
+  <h2>📌 Częste warianty zapytań SQL (EGZAMIN)</h2>
+  <pre><code>
+SELECT * FROM abonamenty;
+SELECT nazwa FROM abonamenty;
+SELECT * FROM abonamenty WHERE cena > 200;
+SELECT * FROM abonamenty ORDER BY cena ASC;
+SELECT * FROM abonamenty ORDER BY cena DESC;
+  </code></pre>
+</section>
+
+<section>
+  <h2>⚠️ Najczęstsze błędy</h2>
+  <ul>
+    <li>❌ index.html zamiast <b>index.php</b></li>
+    <li>❌ brak <code>mysqli_query()</code></li>
+    <li>❌ brak pętli <code>while</code></li>
+    <li>❌ literówki w nazwie bazy lub tabeli</li>
+    <li>❌ brak <code>AUTO_INCREMENT</code></li>
+    <li>❌ brak <code>&lt;link rel="stylesheet"&gt;</code></li>
+    <li>❌ brak UTF-8</li>
+  </ul>
+</section>
+
+<section>
+  <h2>🚑 ULTRA SZYBKA WERSJA (DO WYKUCIA)</h2>
+  <pre><code>
+$conn = mysqli_connect("localhost","root","","medica");
+$w = mysqli_query($conn,"SELECT * FROM abonamenty");
+
+while($r = mysqli_fetch_assoc($w)){
+  echo $r['nazwa'];
+}
+  </code></pre>
+</section>
+
+<section>
+  <h2>✅ Wskazówki egzaminacyjne</h2>
+  <ul>
+    <li>Zawsze sprawdzaj nazwę bazy i tabeli</li>
+    <li>PHP musi być uruchamiane w XAMPP / Apache</li>
+    <li>Najczęściej są 3 rekordy: Standardowy / Premium / Dziecko</li>
+    <li>Wszystko dynamiczne robisz w PHP</li>
+    <li>HTML to tylko szkielet</li>
+  </ul>
+</section>

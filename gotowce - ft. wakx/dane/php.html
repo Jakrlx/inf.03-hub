@@ -1,0 +1,111 @@
+=====================================================
+INF.03 - MEGA ŚCIĄGA PHP + MySQL
+=====================================================
+
+PODSTAWY PHP:
+- PHP to język po stronie serwera.
+- HTML NIE ŁĄCZY SIĘ Z BAZĄ – PHP pobiera dane i wstawia je do HTML.
+- Plik musi mieć rozszerzenie .php, nawet jeśli wyglądają jak HTML.
+- Składnia PHP:
+  <?php
+      // komentarz
+      echo "tekst";
+  ?>
+- Komentarze:
+  // komentarz jednoliniowy
+  /* komentarz
+     wieloliniowy */
+
+STRUKTURA PLIKÓW:
+- index.php       <- główna strona
+- polaczenie.php  <- opcjonalny plik z połączeniem do bazy
+- styl.css        <- stylizacja
+- obraz1.jpg      <- obrazki
+- foldery mogą być dowolne, ważne by poprawnie linkować
+
+BŁĄD NA EGZAMINIE:
+❌ index.html zamiast .php
+❌ brak <link> do CSS
+❌ pisanie PHP przed połączeniem z bazą
+
+=====================================================
+BAZA DANYCH (phpMyAdmin)
+=====================================================
+- Tworzysz bazę w phpMyAdmin
+- Nazwa bazy: medica
+- Kodowanie: utf8mb4_general_ci (dla polskich znaków)
+
+TWORZENIE TABELI:
+CREATE TABLE abonamenty (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nazwa VARCHAR(50),
+    cena INT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+- AUTO_INCREMENT = numeracja id automatyczna
+- PRIMARY KEY = klucz główny (unikalny identyfikator wiersza)
+
+WSTAWIANIE DANYCH:
+INSERT INTO abonamenty (nazwa, cena) VALUES
+('Standardowy', 200),
+('Premium', 500),
+('Dziecko', 150);
+
+- Każdy wiersz wstawiasz oddzielnie lub wszystkie na raz.
+- Na końcu zawsze średnik ;
+
+=====================================================
+POŁĄCZENIE Z BAZĄ (polaczenie.php)
+=====================================================
+<?php
+$conn = mysqli_connect("localhost", "root", "", "medica");
+if (!$conn) {
+    die("Błąd połączenia z bazą: " . mysqli_connect_error());
+}
+?>
+
+- host: localhost
+- user: root
+- password: "" (puste)
+- dbname: medica
+- mysqli_connect() = łączy z bazą
+- die() = przerywa skrypt jeśli błąd
+
+=====================================================
+POBIERANIE DANYCH Z BAZY
+=====================================================
+<?php
+require_once "polaczenie.php"; // wczytanie połączenia
+
+$sql = "SELECT * FROM abonamenty"; // zapytanie SQL
+$wynik = mysqli_query($conn, $sql); // wykonanie zapytania
+
+if (!$wynik) {
+    die("Błąd zapytania SQL: " . mysqli_error($conn));
+}
+
+while ($wiersz = mysqli_fetch_assoc($wynik)) {
+    echo $wiersz['nazwa'] . " - " . $wiersz['cena'] . " zł<br>";
+}
+
+mysqli_close($conn); // zamknięcie połączenia
+?>
+
+- mysqli_query() = wykonuje SELECT, INSERT, UPDATE, DELETE
+- mysqli_fetch_assoc() = zwraca wiersz jako tablicę asocjacyjną
+- pętla while przechodzi po wszystkich wierszach
+
+=====================================================
+WYŚWIETLANIE W HTML
+=====================================================
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Przychodnia Medica</title>
+    <link rel="stylesheet" href="styl.css">
+</head>
+<body>
+
+<header><h1>Abonamenty</h1></header>
+<ma

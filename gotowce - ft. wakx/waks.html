@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>INF.03 – Centrum wiedzy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+
+
+    
+    <!-- PANEL LEWY / MENU -->
+    <aside class="menu">
+        <h1>INF.03</h1>
+        <p class="subtitle">Egzamin zawodowy</p>
+
+        <button onclick="load('html')">📄 HTML</button>
+        <button onclick="load('css')">🎨 CSS</button>
+        <button onclick="load('js')">⚙️ JavaScript</button>
+        <button onclick="load('php')">🐘 PHP</button>
+        <button onclick="load('sql')">🗄️ SQL</button>
+        <button onclick="load('baza')">💾 Baza danych</button>
+
+        <hr>
+
+        <button onclick="load('zadanie_1')">📝 Zadanie egz.</button>
+        <button onclick="load('ratunek')" class="danger">🚑 RATUNEK</button>
+    </aside>
+
+    <!-- PANEL PRAWY / TREŚĆ -->
+    <main class="content">
+        <div class="topbar">
+            <span id="sectionTitle">Wybierz dział</span>
+            <button onclick="copyText()">📋 Kopiuj</button>
+        </div>
+
+        <pre id="output">
+Witaj w centrum INF.03 👋
+
+➡️ Wybierz dział z menu po lewej
+➡️ Tu pojawi się ściąga / kod / notatki
+➡️ Przycisk „Kopiuj” kopiuje całą zawartość
+
+Powodzenia na egzaminie 💪
+        </pre>
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
